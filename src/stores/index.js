@@ -3,18 +3,17 @@ import createSagaMiddleware from 'redux-saga'
 import { composeWithDevTools } from 'redux-devtools-extension'
 // import { composeWithDevTools } from 'redux-devtools-extension'
 
-import marsGalleryStore from 'stores/marsGalleryStore/marsGalleryRedux'
+import picturesGalleryStore from 'stores/picturesGalleryStore/picturesGalleryRedux'
 import startupSaga from './startupSaga'
-import { fetchMarsPhotos} from 'stores/marsGalleryStore/Sagas/fetchMarsPhotos'
-
+import { fetchGalleryPictures } from 'stores/picturesGalleryStore/Sagas/fetchGalleryPictures'
 const reducers = combineReducers({
-  marsGalleryStore
+  picturesGalleryStore
 })
 
 const sagaMiddleware = createSagaMiddleware()
 
 const store = createStore(reducers, composeWithDevTools(applyMiddleware(sagaMiddleware)))
 
-sagaMiddleware.run(fetchMarsPhotos)
+sagaMiddleware.run(fetchGalleryPictures)
 
 export default store
